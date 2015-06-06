@@ -23,7 +23,7 @@ def revoluteJoint(joint):
   s = tvtk.CylinderSource(height=0.1, radius=0.02)
   quat = e.Quaterniond()
   # Cylinder is around the Y axis
-  quat.setFromTwoVectors(e.Vector3d.UnitY(), axis)
+  quat.setFromTwoVectors(axis, e.Vector3d.UnitY())
   return makeActor(s, tuple(axis)), sva.PTransformd(quat)
 
 
@@ -34,8 +34,7 @@ def prismaticJoint(joint):
   axis = e.toEigen(e.toNumpy(joint.motionSubspace())[3:])
   s = tvtk.CubeSource(x_length=0.02, y_length=0.1, z_length=0.02)
   quat = e.Quaterniond()
-  quat.setFromTwoVectors(e.Vector3d.UnitY(), axis)
-  quat.setFromTwoVectors(e.Vector3d.UnitY(), axis)
+  quat.setFromTwoVectors(axis, e.Vector3d.UnitY())
   return makeActor(s, tuple(axis)), sva.PTransformd(quat)
 
 
