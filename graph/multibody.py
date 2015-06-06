@@ -159,6 +159,6 @@ if __name__ == '__main__':
 
   # test axis
   from axis import Axis
-  a1 = Axis()
-  a1.addActor(viewer.scene)
+  a1 = Axis(text='test', length=0.2)
+  a1.addActors(viewer.scene)
   a1.X = sva.PTransformd(sva.RotX(np.pi/2.), e.Vector3d.UnitX())
