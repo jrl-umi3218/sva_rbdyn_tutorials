@@ -162,3 +162,12 @@ if __name__ == '__main__':
   a1 = Axis(text='test', length=0.2)
   a1.addActors(viewer.scene)
   a1.X = sva.PTransformd(sva.RotX(np.pi/2.), e.Vector3d.UnitX())
+
+  # test vector6d
+  from vector6d import ForceVecViz, MotionVecViz
+  M = sva.MotionVecd(e.Vector3d(0.2, 0.1, 0.), e.Vector3d(0.1, 0., 0.2))
+  F = sva.ForceVecd(e.Vector3d(-0.2, -0.1, 0.), e.Vector3d(-0.1, 0., -0.2))
+  MV = MotionVecViz(M, a1.X)
+  FV = ForceVecViz(F, sva.PTransformd(sva.RotX(np.pi/2.), e.Vector3d.UnitX()*1.4))
+  MV.addActors(viewer.scene)
+  FV.addActors(viewer.scene)
