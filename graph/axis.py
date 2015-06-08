@@ -31,6 +31,7 @@ class Axis(object):
     )
     ySize = self.textActor.bounds[3]*1.2
     self.X_text = sva.PTransformd(e.Vector3d(0., -ySize, 0.))
+    self._transform()
 
 
   def _transform(self):
