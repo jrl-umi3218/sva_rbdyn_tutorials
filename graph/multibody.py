@@ -78,7 +78,8 @@ class MultiBodyViz(object):
     """
     actors = map(lambda ab: ab[1], self.aBodies) +\
       map(lambda aj: aj[1], self.aJoints)
-    scene.add_actors(actors)
+    for actor in actors:
+      scene.renderer.add_actor(actor)
 
 
 

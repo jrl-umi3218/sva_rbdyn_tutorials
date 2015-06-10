@@ -55,8 +55,8 @@ class Axis(object):
     """
     Add actors to the scene.
     """
-    scene.add_actor(self.axesActor)
-    scene.add_actor(self.textActor)
+    scene.renderer.add_actor(self.axesActor)
+    scene.renderer.add_actor(self.textActor)
     self.textActor.camera = scene.camera
 
 
@@ -64,5 +64,5 @@ class Axis(object):
     """
     Remove actors from the scene.
     """
-    scene.remove_actor(self.axesActor)
-    scene.remove_actor(self.textActor)
+    scene.renderer.remove_actor(self.axesActor)
+    scene.renderer.remove_actor(self.textActor)

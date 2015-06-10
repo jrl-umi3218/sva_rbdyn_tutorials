@@ -55,18 +55,18 @@ class Vector6dViz(object):
     """
     Add actors to the scene.
     """
-    scene.add_actor(self.linearActor)
-    scene.add_actor(self.angularActor)
-    scene.add_actor(self.arcActor)
+    scene.renderer.add_actor(self.linearActor)
+    scene.renderer.add_actor(self.angularActor)
+    scene.renderer.add_actor(self.arcActor)
 
 
   def removeActors(self, scene):
     """
     Remove actors from the scene.
     """
-    scene.remove_actor(self.linearActor)
-    scene.remove_actor(self.angularActor)
-    scene.remove_actor(self.arcActor)
+    scene.renderer.remove_actor(self.linearActor)
+    scene.renderer.remove_actor(self.angularActor)
+    scene.renderer.remove_actor(self.arcActor)
 
 
 
