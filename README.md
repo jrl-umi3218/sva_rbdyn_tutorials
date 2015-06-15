@@ -4,6 +4,7 @@ This repository contain IPython notebook tutorial for the SpaceVecAlg and the RB
  * [SpaceVecAlg tutorial](http://nbviewer.ipython.org/github/jorisv/sva_rbdyn_tutorials/blob/master/SpaceVecAlg.ipynb)
  * [MultiBody tutorial](http://nbviewer.ipython.org/github/jorisv/sva_rbdyn_tutorials/blob/master/MultiBody.ipynb)
  * [Rigid Body Algorithm tutorial](http://nbviewer.ipython.org/github/jorisv/sva_rbdyn_tutorials/blob/master/SomeAlgorithm.ipynb)
+ * [Jacobian tutorial](http://nbviewer.ipython.org/github/jorisv/sva_rbdyn_tutorials/blob/master/Jacobian.ipynb)
 
 ## Execute
 
