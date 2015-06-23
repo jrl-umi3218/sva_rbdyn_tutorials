@@ -18,7 +18,7 @@ class MultiBodyViz(object):
     """
     MutiBody visualisation.
     Params:
-      - meshDict : {bodyName: fileName}
+      - meshDict : {bodyName: (fileName, X_s)}
       - endEffectorDict : {bodyName, X_to_end_effector, size, color}
     """
     self.aBodies = [] # (body index, actor, X_s)
@@ -31,12 +31,12 @@ class MultiBodyViz(object):
                          len(list(successorJointsId[b.id()])) > 0}
 
     # create actor from mesh
-    for bodyName, fileName in meshDict.items():
+    for bodyName, (fileName, X_sm) in meshDict.items():
       bodyId = mbg.bodyIdByName(bodyName)
       bi = mb.bodyIndexById(bodyId)
       del lineBodiesByIndex[bi] # don't create a line body if a mesh is set
       a, X_s = meshBody(fileName)
-      self.aBodies.append((bi, a, X_s))
+      self.aBodies.append((bi, a, X_sm))
 
     # create actor from end effector
     for bodyName, (X_see, size, color) in endEffectorDict.items():
