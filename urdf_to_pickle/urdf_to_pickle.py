@@ -27,7 +27,7 @@ def urdfToPickle(urdfStr, outPath, packageToPath, extensionDict):
 
   Pickle file tuple:
     - mb: MultiBody
-    - meshDict: {bodyName:(meshPath, X_s}
+    - meshDict: {bodyName:(meshPath, X_s, scale}
     -- X_s: static transform from link origin
   """
   urdfData = rbdyn_urdf.readUrdf(urdfStr)
@@ -82,10 +82,12 @@ def XFromOrigin(dom):
   return X
 
 
-def meshPathFromGeometry(dom):
+def meshPathAndScaleFromGeometry(dom):
   geometryDom = dom.getElementsByTagName('geometry')
   meshDom = geometryDom[0].getElementsByTagName('mesh')
-  return meshDom[0].getAttribute('filename')
+  fileName = meshDom[0].getAttribute('filename')
+  scale = getAttributeDefault(meshDom[0], 'scale', "1 1 1")
+  return fileName, attrToList(scale)
 
 
 def replacePackage(fileName, packageToPath):
@@ -112,10 +114,11 @@ def linkVisual(mb, urdfStr, packageToPath, extensionDict):
     for vDom in bDom.getElementsByTagName('visual'):
       X_s = XFromOrigin(vDom)
       try:
-        meshFileName = meshPathFromGeometry(vDom)
+        meshFileName, scale = meshPathAndScaleFromGeometry(vDom)
         meshFileNameNoPkg = replacePackage(meshFileName, packageToPath)
         meshFileNameNoPkgNewExt = replaceExt(meshFileNameNoPkg, extensionDict)
-        meshDict[bDom.getAttribute('name')] = (meshFileNameNoPkgNewExt, X_s)
+        meshDict[bDom.getAttribute('name')] =\
+          (meshFileNameNoPkgNewExt, X_s, scale)
       except IndexError:
         pass
 
