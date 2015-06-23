@@ -6,6 +6,7 @@ This repository contain IPython notebook tutorial for the SpaceVecAlg and the RB
  * [Rigid Body Algorithm tutorial](http://nbviewer.ipython.org/github/jorisv/sva_rbdyn_tutorials/blob/master/SomeAlgorithm.ipynb)
  * [Jacobian tutorial](http://nbviewer.ipython.org/github/jorisv/sva_rbdyn_tutorials/blob/master/Jacobian.ipynb)
  * [My First Inverse Kinematic](http://nbviewer.ipython.org/github/jorisv/sva_rbdyn_tutorials/blob/master/MyFirstIK.ipynb)
+ * [Inverse Kinematic with the REEM-C humanoid robot](http://nbviewer.ipython.org/github/jorisv/sva_rbdyn_tutorials/blob/master/ReemCIK.ipynb)
 
 ## Execute
 
