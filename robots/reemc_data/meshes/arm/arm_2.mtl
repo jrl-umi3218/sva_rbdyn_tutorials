@@ -1,0 +1,12 @@
+# Blender MTL File: 'None'
+# Material Count: 1
+
+newmtl arm_2
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 10.000000 10.000000 10.000000
+Ni -1.000000
+d 1.000000
+illum 2
+map_Kd /home/trollboy/dev/these/robots_blender_model-1/reemc/meshes_original/arm/arm_2_color.png
