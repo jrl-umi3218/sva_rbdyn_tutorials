@@ -41,13 +41,29 @@ def linesBody(mb, bodyId, successorJointsId):
   return actor, sva.PTransformd.Identity()
 
 
-def meshBody(fileName):
+def meshBody(fileName, scale=(1., 1., 1.)):
   """
   Return a mesh actor and the appropriate static transform.
   """
   reader = FILE_READER[splitext(fileName)[1]](file_name=fileName)
+  output = reader.output
 
-  pdm = tvtk.PolyDataMapper(input=reader.output)
+  # if a scale is set we have to apply it
+  if map(float, scale) != [1., 1., 1.]:
+    tpdf_transform = tvtk.Transform()
+    tpdf_transform.identity()
+    tpdf_transform.scale(scale)
+    tpdf = tvtk.TransformPolyDataFilter(input=reader.output, transform=tpdf_transform)
+    tpdf.update()
+    output = tpdf.output
+
+  # compute mesh normal to have a better render and reverse mesh normal
+  # if the scale flip them
+  pdn = tvtk.PolyDataNormals(input=output)
+  pdn.update()
+  output = pdn.output
+
+  pdm = tvtk.PolyDataMapper(input=output)
   actor = tvtk.Actor(mapper=pdm)
   actor.user_transform = tvtk.Transform()
 
