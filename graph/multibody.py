@@ -60,19 +60,21 @@ class MultiBodyViz(object):
         pass
 
 
-  def display(self, mb, mbc):
+  def display(self, mb, mbc, displayBodies=True, displayJoints=True):
     """
     Display the MultiBody.
     """
     bodyPosW = list(mbc.bodyPosW)
 
-    for bi, actor, X_s in self.aBodies:
-      X_a = X_s*bodyPosW[bi]
-      setActorTransform(actor, X_a)
+    if displayBodies:
+      for bi, actor, X_s in self.aBodies:
+        X_a = X_s*bodyPosW[bi]
+        setActorTransform(actor, X_a)
 
-    for ji, actor, X_s in self.aJoints:
-      X_a = X_s*bodyPosW[ji]
-      setActorTransform(actor, X_a)
+    if displayJoints:
+      for ji, actor, X_s in self.aJoints:
+        X_a = X_s*bodyPosW[ji]
+        setActorTransform(actor, X_a)
 
 
   def addActors(self, scene):
