@@ -4,9 +4,9 @@ import eigen3 as e
 import rbdyn as rbd
 
 
-def multi_task_ik(mb, mbc, tasks, delta=1., maxIter=100, prec=1e-8):
+def multiTaskIk(mb, mbc, tasks, delta=1., maxIter=100, prec=1e-8):
   """
-  The multi_task_ik function is a generator that will return at each call
+  The multiTaskIk function is a generator that will return at each call
   the new step in the IK process.
 
   Parameters:
@@ -105,7 +105,7 @@ if __name__ == '__main__':
   X_O_p_res = None
   alphaInfList = []
   for iterate, q, alpha, alphaInf in\
-      multi_task_ik(mb, mbc, tasks, delta=1., maxIter=200, prec=1e-8):
+      multiTaskIk(mb, mbc, tasks, delta=1., maxIter=200, prec=1e-8):
     q_res = q
     alphaInfList.append(alphaInf)
 
